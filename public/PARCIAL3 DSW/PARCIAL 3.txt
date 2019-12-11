@@ -1,0 +1,66 @@
+Group: Figueroa Valeriano clif Howard - Solsol Iisminio Jak Estai
+
+1. The physical view with a Deployment Diagram. (3pts)
+------------------
+@startuml
+actor User
+node "Supervisor WorkStation" as SW {
+[Web Browser]
+}
+node "Aplication Web" as AW{
+[Web App]-->[BD]
+[BD]
+}
+User--> [Web Browser]
+
+SW - AW:HTTP
+@enduml 
+
+------------------------
+
+2. The logic view with a Class Diagram. (3pts)
+------------------------------
+@startuml
+
+title Classes - Class Diagram - PARTIAL 3
+
+
+class user {
+  +int id
+  +String name
+}
+
+class professional{
+  +int id
+  +String name
+  +String job
+}
+class role{
+  + int id
+  + string name
+  + string description
+}
+class client{
+  +int id
+  +String name
+}
+class service{
+  +int id
+  +string name
+  +string description
+}
+class calification{
+  +float rating
+}
+class category{
+  +int id
+  +string category
+}
+user <|-- professional
+user <|-- client
+user "1" *-- "1" role
+service "*" *-- "1" professional
+category "1" --* "1" service
+service "1" -- "*" calification
+client "*" -- "*" service
+@enduml
